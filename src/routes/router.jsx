@@ -4,10 +4,10 @@ import HomeLayouts from "../layout/HomeLayouts";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayouts></HomeLayouts>,
+    element: <HomeLayouts />,
   },
   {
-    path: "auth",
+    path: "/auth",
     element: <h2>Auth</h2>,
   },
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <h2>News</h2>,
   },
   {
-    path: "/*",
+    path: "*",
     element: <h2>Error-404</h2>,
   },
 ]);

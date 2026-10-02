@@ -11,7 +11,7 @@ const Header = () => {
         Journalism Without Fear or Favour
       </p>
       <p className="poppins-semibold ">
-        {format(new Date(), "EEEE, MMMM Q, Y")}
+        {format(new Date(), "EEEE, MMMM MM, yyyy")}
       </p>
     </div>
   );
