@@ -1,13 +1,14 @@
-import {
-  FaEye,
-  FaRegBookmark,
-  FaShareAlt,
-  FaStar,
-} from "react-icons/fa";
+import { useState } from "react";
+import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from "react-icons/fa";
 import { format } from "date-fns";
 
 const NewsCard = ({ news }) => {
+  const [showFullText, setShowFullText] = useState(false);
+
   const { title, author, image_url, details, tags, rating, total_view } = news;
+
+  const shortDetails =
+    details?.length > 300 ? `${details.slice(0, 300)}...` : details;
 
   return (
     <div className="border border-base-300 rounded-lg overflow-hidden bg-base-100">
@@ -31,7 +32,6 @@ const NewsCard = ({ news }) => {
           </div>
         </div>
 
-        {/* Bookmark & Share */}
         <div className="flex items-center gap-5 text-gray-500">
           <button className="text-xl hover:text-secondary transition">
             <FaRegBookmark />
@@ -60,12 +60,17 @@ const NewsCard = ({ news }) => {
         {/* Details */}
         <div className="mt-7">
           <p className="text-gray-500 leading-7 text-base">
-            {details?.length > 300 ? `${details.slice(0, 300)}...` : details}
+            {showFullText ? details : shortDetails}
           </p>
 
-          <button className="text-secondary font-semibold mt-2 hover:underline">
-            Read More
-          </button>
+          {details?.length > 300 && (
+            <button
+              onClick={() => setShowFullText(!showFullText)}
+              className="text-secondary font-semibold mt-2 hover:underline"
+            >
+              {showFullText ? "Read Less" : "Read More"}
+            </button>
+          )}
         </div>
 
         {/* Tags */}
@@ -82,9 +87,8 @@ const NewsCard = ({ news }) => {
           </div>
         )}
 
-        {/* Divider */}
+        {/* Bottom */}
         <div className="border-t border-base-300 mt-5 pt-5">
-          {/* Rating & Views */}
           <div className="flex items-center justify-between">
             {/* Rating */}
             <div className="flex items-center gap-1">
@@ -94,15 +98,12 @@ const NewsCard = ({ news }) => {
                 ))}
               </div>
 
-              <span className="ml-2 text-gray-500">
-                {rating?.number || "0"}
-              </span>
+              <span className="ml-2 text-gray-500">{rating?.number || 0}</span>
             </div>
 
             {/* Views */}
             <div className="flex items-center gap-2 text-gray-500">
               <FaEye className="text-lg" />
-
               <span>{total_view || 0}</span>
             </div>
           </div>
