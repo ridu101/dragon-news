@@ -45,6 +45,7 @@ const HomeLayouts = () => {
             md:col-span-4
             lg:col-span-3
             min-w-0
+             sticky top-0 h-fit
           "
         >
           <LeftAside />
@@ -69,6 +70,7 @@ const HomeLayouts = () => {
             md:col-span-12
             lg:col-span-3
             min-w-0
+            sticky top-0 h-fit
           "
         >
           <RightAside />
