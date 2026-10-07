@@ -13,22 +13,23 @@ const Categories = () => {
   const categories = use(categoryPromise);
 
   return (
-    <div>
-      <h2 className="font-bold text-xl text-base-content">
+    <div className="w-full min-w-0 overflow-hidden">
+
+      <h2 className="font-bold text-lg sm:text-xl text-base-content">
         All Categories ({categories.length})
       </h2>
 
-      <div className="grid grid-cols-1 gap-3 mt-5">
+      <div className="grid grid-cols-1 gap-2 sm:gap-3 mt-4 sm:mt-5 w-full">
+
         {categories.map((category) => {
           return (
             <NavLink
               key={category.id}
               to={`/category/${category.id}`}
               className={({ isActive }) =>
-                `px-5 py-3 rounded-lg font-semibold text-center transition-all duration-300 ${
-                  isActive
-                    ? "bg-secondary text-white shadow-md"
-                    : "bg-base-200 text-accent hover:bg-secondary/10 hover:text-secondary"
+                `block w-full min-w-0 px-4 sm:px-5 py-3 rounded-lg font-semibold text-center text-sm sm:text-base leading-5 wrap-break-word whitespace-normal transition-all duration-300 ${isActive
+                  ? "bg-secondary text-white shadow-md"
+                  : "bg-base-200 text-accent hover:bg-secondary/10 hover:text-secondary"
                 }`
               }
             >
@@ -36,6 +37,7 @@ const Categories = () => {
             </NavLink>
           );
         })}
+
       </div>
     </div>
   );

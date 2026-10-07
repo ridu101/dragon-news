@@ -1,15 +1,15 @@
-// import React from 'react';
-import { Outlet } from 'react-router';
-import Navbar from '../components/Navbar';
+import { Outlet } from "react-router";
+import Navbar from "../components/Navbar";
 
 const AuthLayout = () => {
     return (
-        <div>
-            <header className='py-3 w-10/12 mx-auto'>
-                <Navbar></Navbar>
+        <div className="min-h-screen bg-base-200">
+            <header className="py-3 w-11/12 md:w-10/12 mx-auto">
+                <Navbar />
             </header>
-            <main className=''>
-                <Outlet></Outlet>
+
+            <main>
+                <Outlet />
             </main>
         </div>
     );
